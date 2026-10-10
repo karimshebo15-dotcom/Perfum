@@ -1,10 +1,13 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import { useCart } from "@/components/CartProvider";
 
 type Product = {
   name: string;
+  slug: string;
   notes: string;
   price: string;
   category: "warm" | "fresh";
@@ -14,13 +17,13 @@ type Product = {
 };
 
 const products: Product[] = [
-  { name: "سُهاد", notes: "عود • عنبر • فانيليا مدخنة", price: "٢٬٨٥٠ ج.م", category: "warm", tone: "tone-amber", bottle: "bottle-square", badge: "الأكثر مبيعًا" },
-  { name: "نَدى", notes: "برغموت • زهر البرتقال • مسك", price: "٢٬٤٥٠ ج.م", category: "fresh", tone: "tone-ivory", bottle: "bottle-round", badge: "جديد" },
-  { name: "وَجد", notes: "ورد طائفي • زعفران • خشب الصندل", price: "٢٬٦٥٠ ج.م", category: "warm", tone: "tone-olive", bottle: "bottle-tall" },
+  { slug: "sohad", name: "سُهاد", notes: "عود • عنبر • فانيليا مدخنة", price: "٢٬٨٥٠ ج.م", category: "warm", tone: "tone-amber", bottle: "bottle-square", badge: "الأكثر مبيعًا" },
+  { slug: "nada", name: "نَدى", notes: "برغموت • زهر البرتقال • مسك", price: "٢٬٤٥٠ ج.م", category: "fresh", tone: "tone-ivory", bottle: "bottle-round", badge: "جديد" },
+  { slug: "wajd", name: "وَجد", notes: "ورد طائفي • زعفران • خشب الصندل", price: "٢٬٦٥٠ ج.م", category: "warm", tone: "tone-olive", bottle: "bottle-tall" },
 ];
 
 const navLinks = [
-  ["قصتنا", "#story"], ["العطور", "#bestsellers"], ["المجموعات", "#collections"], ["دليل النوتات", "#notes"],
+  ["قصتنا", "#story"], ["كل العطور", "/products"], ["المجموعات", "#collections"], ["دليل النوتات", "#notes"],
 ];
 
 export default function Home() {
@@ -28,7 +31,7 @@ export default function Home() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState<"all" | "warm" | "fresh">("all");
-  const [cart, setCart] = useState(0);
+  const { count: cart, addItem } = useCart();
   const [toast, setToast] = useState("");
 
   const visibleProducts = useMemo(() => products.filter(product => filter === "all" || product.category === filter), [filter]);
@@ -57,8 +60,8 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  function addToCart(name: string) {
-    setCart(value => value + 1);
+  function addToCart(slug: string, name: string) {
+    addItem(slug);
     setToast(`تمت إضافة ${name} إلى السلة`);
   }
 
@@ -78,7 +81,7 @@ export default function Home() {
         <nav className="desktop-nav" aria-label="التنقل الرئيسي">{navLinks.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</nav>
         <div className="header-actions">
           <button className="icon-button" type="button" aria-label="البحث" onClick={() => setSearchOpen(true)}><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg></button>
-          <button className="cart-button" type="button" aria-label={`سلة التسوق، ${cart} منتجات`}>السلة <span>{new Intl.NumberFormat("ar-EG").format(cart)}</span></button>
+          <Link className="cart-button" href="/cart" aria-label={`سلة التسوق، ${cart} منتجات`}>السلة <span>{new Intl.NumberFormat("ar-EG").format(cart)}</span></Link>
           <button className="menu-button" type="button" aria-expanded={menuOpen} aria-controls="mobileNav" aria-label="فتح القائمة" onClick={() => setMenuOpen(value => !value)}><span></span><span></span></button>
         </div>
         <nav className="mobile-nav" id="mobileNav" aria-label="قائمة الهاتف">{navLinks.map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</nav>
@@ -100,8 +103,8 @@ export default function Home() {
 
         <section className="products section" id="bestsellers" aria-labelledby="productsTitle">
           <div className="section-heading reveal"><div><p className="eyebrow dark">الأكثر طلبًا</p><h2 id="productsTitle">اختر أثرك</h2></div><div className="filters" role="group" aria-label="تصفية العطور">{([['all','الكل'],['warm','دافئ'],['fresh','منعش']] as const).map(([value,label]) => <button key={value} className={`filter ${filter === value ? "active" : ""}`} onClick={() => setFilter(value)} type="button">{label}</button>)}</div></div>
-          <div className="product-grid">{visibleProducts.map(product => <article className="product-card reveal visible" key={product.name}><div className={`product-visual ${product.tone}`}>{product.badge && <span className={`badge ${product.name === "نَدى" ? "new" : ""}`}>{product.badge}</span>}<div className={`bottle ${product.bottle}`}><i>أثــر</i><small>{product.name}</small></div><button className="quick-add" type="button" onClick={() => addToCart(product.name)}>+ أضف للسلة</button></div><div className="product-info"><div><h3>{product.name}</h3><p>{product.notes}</p></div><strong>{product.price}</strong></div></article>)}</div>
-          <div className="center-action"><a className="button button-dark" href="#collections">عرض المجموعة كاملة</a></div>
+          <div className="product-grid">{visibleProducts.map(product => <article className="product-card reveal visible" key={product.name}><div className={`product-visual ${product.tone}`}>{product.badge && <span className={`badge ${product.name === "نَدى" ? "new" : ""}`}>{product.badge}</span>}<Link className={`bottle ${product.bottle}`} href={`/products/${product.slug}`}><i>أثــر</i><small>{product.name}</small></Link><button className="quick-add" type="button" onClick={() => addToCart(product.slug, product.name)}>+ أضف للسلة</button></div><div className="product-info"><div><Link href={`/products/${product.slug}`}><h3>{product.name}</h3></Link><p>{product.notes}</p></div><strong>{product.price}</strong></div></article>)}</div>
+          <div className="center-action"><Link className="button button-dark" href="/products">عرض المجموعة كاملة</Link></div>
         </section>
 
         <section className="collection-story" id="collections">
@@ -123,7 +126,7 @@ export default function Home() {
 
       <footer><div className="footer-top"><a className="footer-brand" href="#top"><span>أ</span>أثــر</a><div className="footer-links"><div><strong>تصفّح</strong><a href="#bestsellers">العطور</a><a href="#collections">المجموعات</a><a href="#story">قصتنا</a></div><div><strong>المساعدة</strong><a href="#newsletter">تواصل معنا</a><a href="#values">الشحن والاستبدال</a><a href="#notes">الأسئلة الشائعة</a></div><div><strong>تابعنا</strong><a href="#community">إنستغرام</a><a href="#community">تيك توك</a><a href="#community">بينترست</a></div></div></div><div className="footer-bottom"><span>© ٢٠٢٦ أثر للعطور. جميع الحقوق محفوظة.</span><span>صُنع ليبقى أثره</span></div></footer>
 
-      <div className={`search-panel ${searchOpen ? "open" : ""}`} aria-hidden={!searchOpen}><button type="button" className="search-close" aria-label="إغلاق البحث" onClick={() => setSearchOpen(false)}>×</button><div><label htmlFor="siteSearch">ما العطر الذي تبحث عنه؟</label><input id="siteSearch" type="search" value={search} onChange={event => setSearch(event.target.value)} placeholder="جرّب: عود، مسك، منعش..." autoFocus={searchOpen}/><div className="search-results">{search.trim() && (searchResult ? <a className="search-result-link" href="#bestsellers" onClick={() => { setFilter(searchResult.category); setSearchOpen(false); }}>وجدنا لك: {searchResult.name}</a> : "لم نجد نتيجة مطابقة، جرّب كلمة أخرى.")}</div></div></div>
+      <div className={`search-panel ${searchOpen ? "open" : ""}`} aria-hidden={!searchOpen}><button type="button" className="search-close" aria-label="إغلاق البحث" onClick={() => setSearchOpen(false)}>×</button><div><label htmlFor="siteSearch">ما العطر الذي تبحث عنه؟</label><input id="siteSearch" type="search" value={search} onChange={event => setSearch(event.target.value)} placeholder="جرّب: عود، مسك، منعش..." autoFocus={searchOpen}/><div className="search-results">{search.trim() && (searchResult ? <Link className="search-result-link" href={`/products/${searchResult.slug}`}>وجدنا لك: {searchResult.name}</Link> : "لم نجد نتيجة مطابقة، جرّب كلمة أخرى.")}</div></div></div>
       <div className={`toast ${toast ? "show" : ""}`} role="status" aria-live="polite">{toast}</div>
     </>
   );
