@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="أثر — عطور عربية معاصرة من العود والعنبر والمسك، صُممت لتترك حضورًا لا يُنسى.">
+  <meta name="theme-color" content="#0c0d0b">
+  <title>أثر | عطور تُروى</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600&family=Reem+Kufi:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+
+  <div class="announcement">توصيل مجاني للطلبات فوق ١٥٠٠ ج.م <span>•</span> عينات مجانية مع كل طلب</div>
+
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="أثر - الصفحة الرئيسية">
+      <span class="brand-mark">أ</span>
+      <span class="brand-name">أثــر</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="التنقل الرئيسي">
+      <a href="#story">قصتنا</a>
+      <a href="#bestsellers">العطور</a>
+      <a href="#collections">المجموعات</a>
+      <a href="#notes">دليل النوتات</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-button" type="button" aria-label="البحث" id="searchButton">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+      </button>
+      <button class="cart-button" type="button" aria-label="سلة التسوق">
+        السلة <span id="cartCount">٠</span>
+      </button>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="فتح القائمة">
+        <span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav" aria-label="قائمة الهاتف">
+      <a href="#story">قصتنا</a>
+      <a href="#bestsellers">العطور</a>
+      <a href="#collections">المجموعات</a>
+      <a href="#notes">دليل النوتات</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="heroTitle">
+      <img class="hero-image" src="assets/hero-perfume.png" alt="زجاجة عطر عنبرية محاطة بخشب العود والدخان" fetchpriority="high">
+      <div class="hero-shade"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">مجموعة خريف ٢٠٢٦</p>
+        <h1 id="heroTitle">لكل حكاية<br><em>أثرٌ يبقى</em></h1>
+        <p class="hero-text">عطور عربية معاصرة، تمتزج فيها جرأة العود بدفء العنبر ونقاء المسك.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#bestsellers">اكتشف العطور</a>
+          <a class="text-link" href="#story">اعرف قصتنا <span>←</span></a>
+        </div>
+      </div>
+      <div class="hero-meta" aria-label="معلومات العطر">
+        <span>عود هندي</span><span>عنبر دافئ</span><span>مسك أبيض</span>
+      </div>
+      <a class="scroll-cue" href="#story" aria-label="مرر للأسفل"><span></span>استكشف</a>
+    </section>
+
+    <section class="manifesto section" id="story">
+      <div class="section-number">٠١</div>
+      <div class="manifesto-kicker reveal">وُلِدنا لنترك علامة</div>
+      <div class="manifesto-body reveal">
+        <h2>لا نصنع عطرًا يشبه غيره.<br>نصنع <em>حضورك.</em></h2>
+        <p>بدأت «أثر» من شغف بسيط: أن نحفظ ذاكرة المكان في زجاجة. نختار خاماتنا بعناية، ونمزج كل تركيبة على مهل، لتصل إليك رائحة صادقة، متوازنة، ولا تُنسى.</p>
+        <a class="line-link" href="#values">المزيد عن دار أثر <span>←</span></a>
+      </div>
+    </section>
+
+    <section class="products section" id="bestsellers" aria-labelledby="productsTitle">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow dark">الأكثر طلبًا</p>
+          <h2 id="productsTitle">اختر أثرك</h2>
+        </div>
+        <div class="filters" role="group" aria-label="تصفية العطور">
+          <button class="filter active" data-filter="all" type="button">الكل</button>
+          <button class="filter" data-filter="warm" type="button">دافئ</button>
+          <button class="filter" data-filter="fresh" type="button">منعش</button>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card reveal" data-category="warm">
+          <div class="product-visual tone-amber">
+            <span class="badge">الأكثر مبيعًا</span>
+            <div class="bottle bottle-square"><i>أثــر</i><small>سُهاد</small></div>
+            <button class="quick-add" type="button" data-product="سُهاد">+ أضف للسلة</button>
+          </div>
+          <div class="product-info"><div><h3>سُهاد</h3><p>عود • عنبر • فانيليا مدخنة</p></div><strong>٢٬٨٥٠ ج.م</strong></div>
+        </article>
+
+        <article class="product-card reveal" data-category="fresh">
+          <div class="product-visual tone-ivory">
+            <span class="badge new">جديد</span>
+            <div class="bottle bottle-round"><i>أثــر</i><small>نَدى</small></div>
+            <button class="quick-add" type="button" data-product="نَدى">+ أضف للسلة</button>
+          </div>
+          <div class="product-info"><div><h3>نَدى</h3><p>برغموت • زهر البرتقال • مسك</p></div><strong>٢٬٤٥٠ ج.م</strong></div>
+        </article>
+
+        <article class="product-card reveal" data-category="warm">
+          <div class="product-visual tone-olive">
+            <div class="bottle bottle-tall"><i>أثــر</i><small>وَجد</small></div>
+            <button class="quick-add" type="button" data-product="وَجد">+ أضف للسلة</button>
+          </div>
+          <div class="product-info"><div><h3>وَجد</h3><p>ورد طائفي • زعفران • خشب الصندل</p></div><strong>٢٬٦٥٠ ج.م</strong></div>
+        </article>
+      </div>
+
+      <div class="center-action"><a class="button button-dark" href="#collections">عرض المجموعة كاملة</a></div>
+    </section>
+
+    <section class="collection-story" id="collections">
+      <div class="collection-image-wrap reveal">
+        <img src="assets/collection-perfumes.png" alt="مجموعة من ثلاث زجاجات عطر فوق حجر طبيعي" loading="lazy">
+        <div class="image-label"><span>ثلاث حكايات</span><strong>مجموعة الجذور</strong></div>
+      </div>
+      <div class="collection-copy reveal">
+        <p class="eyebrow dark">المجموعة الجديدة</p>
+        <h2>من الأرض،<br><em>إلى الذاكرة</em></h2>
+        <p>ثلاث تركيبات تستلهم دفء الصحراء بعد الغروب: دخان العود، لمعان العنبر، وسكون المسك. صُممت لتُلبس منفردة أو تُدمج معًا لتكوين أثرك الخاص.</p>
+        <ul class="collection-list">
+          <li><span>٠١</span><div><strong>سُهاد</strong><small>عميق ودافئ</small></div></li>
+          <li><span>٠٢</span><div><strong>نَدى</strong><small>نقي ومضيء</small></div></li>
+          <li><span>٠٣</span><div><strong>وَجد</strong><small>زهري ومتبل</small></div></li>
+        </ul>
+        <a class="line-link" href="#bestsellers">اكتشف مجموعة الجذور <span>←</span></a>
+      </div>
+    </section>
+
+    <section class="notes section" id="notes">
+      <div class="section-number light">٠٢</div>
+      <div class="notes-intro reveal">
+        <p class="eyebrow">اعرف عطرك</p>
+        <h2>رحلة الرائحة<br>في ثلاث <em>لحظات</em></h2>
+      </div>
+      <div class="note-steps">
+        <article class="note-step reveal"><span>١</span><div><h3>المقدمة</h3><p>أول انطباع يدوم لدقائق؛ نفحات منعشة وخفيفة تفتح الحكاية.</p><small>برغموت · فلفل وردي · ليمون</small></div></article>
+        <article class="note-step reveal"><span>٢</span><div><h3>القلب</h3><p>روح العطر التي تظهر بعد قليل وتكشف شخصيته الحقيقية.</p><small>ورد · زعفران · ياسمين</small></div></article>
+        <article class="note-step reveal"><span>٣</span><div><h3>القاعدة</h3><p>الأثر الأطول بقاءً؛ دافئ، عميق، ويلتصق بالذاكرة.</p><small>عود · عنبر · مسك</small></div></article>
+      </div>
+    </section>
+
+    <section class="values" id="values" aria-label="قيمنا">
+      <div><strong>تركيز عالٍ</strong><span>زيوت عطرية تدوم طوال اليوم</span></div>
+      <div><strong>صناعة مسؤولة</strong><span>مكونات مختارة بعناية وتغليف أقل</span></div>
+      <div><strong>هدية مع الطلب</strong><span>عينتان لتكتشف عطرك القادم</span></div>
+    </section>
+
+    <section class="community">
+      <div class="community-copy reveal">
+        <p class="eyebrow">مجتمع أثر</p>
+        <h2>رائحتك،<br><em>على طريقتك</em></h2>
+        <p>شاركنا طقوسك اليومية وكيف تختار عطرك. تابعنا على إنستغرام واستخدم <bdo dir="ltr">#AtharStories</bdo>.</p>
+        <a class="button button-light" href="#newsletter">انضم للمجتمع</a>
+      </div>
+      <div class="community-orbit" aria-hidden="true">
+        <div class="orbit-ring"></div><div class="orbit-core">أثــر<small>منك يبدأ</small></div>
+      </div>
+    </section>
+
+    <section class="newsletter" id="newsletter">
+      <div><p class="eyebrow dark">رسائل من أثر</p><h2>كن أول من يعرف</h2></div>
+      <form id="newsletterForm">
+        <label class="sr-only" for="email">البريد الإلكتروني</label>
+        <input id="email" type="email" placeholder="بريدك الإلكتروني" required autocomplete="email">
+        <button type="submit">اشترك <span>←</span></button>
+      </form>
+      <p>بالاشتراك، أنت توافق على استلام أخبارنا وعروضنا. يمكنك إلغاء الاشتراك في أي وقت.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <a class="footer-brand" href="#top"><span>أ</span>أثــر</a>
+      <div class="footer-links"><div><strong>تصفّح</strong><a href="#bestsellers">العطور</a><a href="#collections">المجموعات</a><a href="#story">قصتنا</a></div><div><strong>المساعدة</strong><a href="#newsletter">تواصل معنا</a><a href="#values">الشحن والاستبدال</a><a href="#notes">الأسئلة الشائعة</a></div><div><strong>تابعنا</strong><a href="#community">إنستغرام</a><a href="#community">تيك توك</a><a href="#community">بينترست</a></div></div>
+    </div>
+    <div class="footer-bottom"><span>© ٢٠٢٦ أثر للعطور. جميع الحقوق محفوظة.</span><span>صُنع ليبقى أثره</span></div>
+  </footer>
+
+  <div class="search-panel" id="searchPanel" aria-hidden="true">
+    <button type="button" class="search-close" aria-label="إغلاق البحث">×</button>
+    <div><label for="siteSearch">ما العطر الذي تبحث عنه؟</label><input id="siteSearch" type="search" placeholder="جرّب: عود، مسك، منعش..."></div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
